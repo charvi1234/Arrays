@@ -1,0 +1,51 @@
+#include <stdio.h>
+/* Include other headers as needed */
+int main()
+{
+  int no;
+  scanf("%d",&no);
+  while(no!=0)
+  {
+    int r1,c1,r2,c2,i,j,k;
+    scanf("%d%d",&r1,&c1);
+    int arr1[r1][c1];
+    for(i=0;i<r1;i++)
+    {
+      for(j=0;j<c1;j++)
+      {
+        scanf("%d",&arr1[i][j]);
+      }
+    }
+    scanf("%d%d",&r2,&c2);
+    int arr2[r2][c2];
+    int temp[r1][c2];
+    for(i=0;i<r2;i++)
+    {
+      for(j=0;j<c2;j++)
+      {
+        scanf("%d",&arr2[i][j]);
+      }
+    }
+    for(i=0;i<r1;i++)
+    {
+      for(j=0;j<c2;j++)
+      {
+        temp[i][j]=0;
+      	for(k=0;k<r2;k++)
+      	{
+        temp[i][j]=arr1[i][k]*arr2[k][j]+temp[i][j];
+      	}
+      }
+    }
+    for(i=0;i<r1;i++)
+    {
+      for(j=0;j<c2;j++)
+      {
+        printf("%d ",temp[i][j]);
+      }
+      printf("\n");
+    }
+    no--;
+  }
+    return 0;
+}
