@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+  int i,j,r,t,l,b,n1,n2,x=0;
+  scanf("%d",&n1);
+  scanf("%d",&n2);
+  int arr[n1][n2];
+  for(i=0;i<n1;i++)
+  {
+    for(j=0;j<n2;j++)
+      scanf("%d",&arr[i][j]);
+  }
+  t=0,l=0;
+  r=n2-1;
+  b=n1-1;
+  int *a=(int*)malloc(sizeof(int)*(n1*n2));
+  while(t<=b&&l<=r)
+  {
+    for(i=l;i<=r;i++)
+    {
+      a[x]=arr[t][i];
+      x++;
+    }
+    t++;
+    if(t>b)
+      break;
+    for(i=t;i<=b;i++)
+    {
+      a[x]=arr[i][r];
+      x++;
+    }
+    r--;
+    if(r<l)
+      break;
+    for(i=r;i>=l;i--)
+    {
+      a[x]=arr[b][i];
+      x++;
+    }
+    b--;
+    if(r<l)
+      break;
+    for(i=b;i>=t;i--)
+    {
+      a[x]=arr[i][l];
+      x++;
+    }
+    l++;
+    if(t>b)
+      break;
+  }
+    for(i=0;i<x;i++)
+      printf("%d\n",a[i]);
+    return 0;
+}
