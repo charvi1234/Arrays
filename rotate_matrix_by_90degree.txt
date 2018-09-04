@@ -1,0 +1,41 @@
+#include <stdio.h>
+int main()
+{
+  int no;
+  scanf("%d",&no);
+  while(no!=0)
+  {
+  int i,j,temp,n11,n12;
+  scanf("%d",&n11);
+  n12=n11;
+  int arr[n11][n12];
+  for(i=0;i<n11;i++)
+  {
+    for(j=0;j<n12;j++)
+      scanf("%d",&arr[i][j]);
+  }
+  for(i=0;i<n11/2;i++)
+  {
+      for(j=i;j<n12-1-i;j++)
+      {
+        temp=arr[i][j];
+        arr[i][j]=arr[n12-1-j][i];
+        arr[n12-1-j][i]=arr[n12-1-i][n12-1-j];
+        arr[n12-1-i][n12-1-j]=arr[j][n12-1-i];
+        arr[j][n12-1-i]=temp;
+      }
+  }
+  for(i=0;i<n11;i++)
+  {
+    for(j=0;j<n12;j++)
+      if(j<n12-1)
+      printf("%d ",arr[i][j]);
+    else if(j==n12-1)
+      printf("%d",arr[i][j]);
+    printf("\n");
+  }
+    printf("\n");
+    no--;
+  }
+    return 0;
+}
