@@ -1,0 +1,59 @@
+/*
+Sample Input:
+
+3
+7
+1 2 3 4 5 6 7
+3
+9
+3 5 2 1 7 5 9 15 11
+10
+1
+5
+13
+
+Sample Output
+
+4 5 6 7 1 2 3
+5 2 1 7 5 9 15 11 3
+5
+*/
+
+#include <stdio.h>
+/* Include other headers as needed */
+int main()
+{
+  int i,j,d,n,rot,temp;
+  scanf("%d",&d);
+  while(d!=0)
+  {
+    scanf("%d",&n);
+    int arr[n];
+    for(i=0;i<n;i++)
+    {
+      scanf("%d",&arr[i]);
+    }
+    scanf("%d",&rot);
+    for(i=0;i<rot;i++)
+    {
+      temp=arr[0];
+      for(j=0;j<n-1;j++)
+      {
+        arr[j]=arr[j+1];
+      }
+      arr[n-1]=temp;
+    }
+     for(i=0;i<n;i++)
+      {
+       if(i<n-1)
+        printf("%d ",arr[i]);
+       else
+       {
+         printf("%d",arr[i]);
+       }
+      }
+    printf("\n");
+    d--;
+  }
+    return 0;
+}
