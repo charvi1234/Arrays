@@ -1,0 +1,32 @@
+/*
+Suppose the array contains the following values:
+{7, 7, 18, 18, 18, 18, 21, 39, 39, 42, 42, 42}
+
+After a call to removeDuplicates(arr, size); 
+the array should store the following values:
+{7, 18, 21, 39, 42}
+*/
+
+void removeDuplicates(int *arr, int *size)
+{
+int n,i,j,k,p;
+  n=*size;
+  for(i=0;i<n;i++)
+  {
+    for(j=(i+1);j<n;)
+    {
+      if(arr[i]==arr[j])
+      {
+        p=j;
+        for(k=p;k<n-1;k++)
+        {
+          arr[k]=arr[k+1];
+        }
+        n=n-1;
+      }
+      else
+        j++;
+    }
+  }
+  *size=n;
+}
