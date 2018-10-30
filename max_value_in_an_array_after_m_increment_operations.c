@@ -1,3 +1,10 @@
+/*
+Input : n = 5 m = 3
+        a = 0, b = 1, k = 100
+        a = 1, b = 4, k = 100
+        a = 2, b = 3, k = 100
+Output : 200
+*/
 #include<stdio.h>
 void main()
 {
