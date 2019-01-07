@@ -1,7 +1,6 @@
 /*
 a cut operation reduces the length of each stick in the array by the length of the array's shortest stick
 Sample Input 1
-
 6
 5
 4
@@ -11,12 +10,10 @@ Sample Input 1
 8
 
 Sample Output 1
-
 6
 4
 2
 1
-
 */
 
 /*
