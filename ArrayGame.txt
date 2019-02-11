@@ -1,0 +1,46 @@
+/* IMPORTANT: Multiple classes and nested static classes are supported */
+
+/*
+ * uncomment this if you want to read input.
+//imports for BufferedReader
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+//import for Scanner and other utility classes
+import java.util.*;
+*/
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+import java.util.*;
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+    Scanner scan = new Scanner(System.in);
+    int n = scan.nextInt();
+    int m = scan.nextInt();
+    int arr1[]=new int[n];
+    int arr2[]=new int[m];
+    int i,j;
+    for(i = 0; i < n; i++)
+    {
+        arr1[i] = scan.nextInt();
+    }
+    for(i=0;i<m;i++)
+    {
+        arr2[i]=scan.nextInt();
+    }
+    Arrays.sort(arr1);
+    Arrays.sort(arr2);
+    long sum = 0;
+    i=0;
+    for(j=m-1; j>=0; j--)
+    {
+    if(i<n)
+    {
+     if(arr1[i]<arr2[j])
+     sum = sum + Math.abs(arr1[i]-arr2[j]);
+    }
+    i++;
+    }
+    System.out.println(sum);
+    }
+}
