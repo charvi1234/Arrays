@@ -1,3 +1,5 @@
+//https://www.hackerearth.com/practice/data-structures/arrays/1-d/practice-problems/algorithm/maximum-of-k-size-subarrays-deque/
+
 /* IMPORTANT: Multiple classes and nested static classes are supported */
 
 /*
