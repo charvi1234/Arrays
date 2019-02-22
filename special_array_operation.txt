@@ -1,0 +1,56 @@
+/* IMPORTANT: Multiple classes and nested static classes are supported */
+
+/*
+ * uncomment this if you want to read input.
+//imports for BufferedReader
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+//import for Scanner and other utility classes
+import java.util.*;
+*/
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+import java.util.*;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+class TestClass {
+    public static void main(String args[] ) throws IOException {
+    Scanner scan = new Scanner(System.in);
+    int n = scan.nextInt();
+    int t = scan.nextInt();
+    long arr[] = new long[n];
+    long quer[] = new long[t];
+    int i,j,count=0;
+    long sum =0;
+    long sums[] = new long[n+1];
+    PriorityQueue<Long> min = new PriorityQueue<>();
+    PriorityQueue<Long> max = new PriorityQueue<>(Collections.reverseOrder());
+    for(i=0;i<n;i++)
+    {
+        arr[i] = scan.nextLong();
+        min.add(arr[i]);
+        max.add(arr[i]);
+        sum = sum+arr[i];
+    }
+    sums[0]=sum;
+    long diff;
+    for(i=1;i<=n;i++)
+    {
+        long x = min.poll();
+        long y = max.poll();
+        min.remove(y);
+        max.remove(x);
+        diff = y-x;
+        sum = sum -(y+x);
+        sum = sum+diff;
+        sums[i]=sum;
+        min.add(diff);
+        max.add(diff);
+    }
+    for(i=0;i<t;i++)
+    System.out.println(sums[scan.nextInt()]);
+}
+}
