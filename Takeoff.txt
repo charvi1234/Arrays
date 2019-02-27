@@ -1,0 +1,67 @@
+/* IMPORTANT: Multiple classes and nested static classes are supported */
+
+/*
+ * uncomment this if you want to read input.
+//imports for BufferedReader
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+//import for Scanner and other utility classes
+import java.util.*;
+*/
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+import java.util.*;
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        int t,count=0;
+        Scanner scan = new Scanner(System.in);
+        t = scan.nextInt();
+        int k,i,j;
+        for(k=0;k<t;k++)
+        {
+            int m =0;
+            count=0;
+            int days = scan.nextInt();
+            int arr[] = new int[3];
+            for(i=0;i<3;i++)
+            {
+                arr[i]=scan.nextInt();
+            }
+            int s1 = days/arr[0];
+            int s2 = days/arr[1];
+            int s3 = days/arr[2];
+            int tot=s1+s2+s3;
+            int arr1[] = new int[tot];
+            for(i=1;i<=s1;i++)
+            {
+            arr1[m]=arr[0]*i;
+            m++;
+            }
+            for(i=1;i<=s2;i++)
+            {
+            arr1[m]=arr[1]*i;
+            m++;
+            }
+            for(i=1;i<=s3;i++)
+            {
+            arr1[m]=arr[2]*i;
+            m++;
+            }
+            Arrays.sort(arr1);
+            int max = arr1[m-1];
+            int arr2[]=new int[max+1];
+            for(i=0;i<m;i++)
+            {
+                arr2[arr1[i]]++;
+            }
+            for(i=0;i<=max;i++)
+            {
+                if(arr2[i]==1)
+                count++;
+            }
+            System.out.println(count);
+        }
+
+    }
+}
