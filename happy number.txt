@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isHappy(int n) {
+        HashSet<Integer> set = new HashSet<>();
+        if(n == 0)
+            return false;
+        int num = n;
+        int result = 0;
+        while(true)
+        {
+            result = 0;
+            while(num != 0 )
+            {
+                int div = num % 10;
+                result = result + (int)Math.pow(div,2);
+                num = num/10;
+            }
+            if(set.contains(result))
+                return false;
+            set.add(result);
+            num = result;
+            if(result == 1)
+            {
+                return true;
+            }
+        }
+    }
+}
