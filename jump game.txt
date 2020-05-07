@@ -1,0 +1,26 @@
+class Solution {
+    enum Index{
+        Bad, Good, Unknown
+    }
+    public boolean canJump(int[] nums) {
+        Index memo[] = new Index[nums.length];
+        for(int i = 0; i < nums.length; i++)
+        {
+            memo[i] = Index.Unknown;
+        }
+        memo[nums.length-1] = Index.Good;
+        for(int i = nums.length - 2; i >= 0; i--)
+        {
+            int farthestJump = Math.min(nums[i] + i, nums.length-1);
+            for(int j = i+1; j <= farthestJump; j++)
+            {
+                if(memo[j] == Index.Good)
+                {
+                    memo[i] = Index.Good;
+                    break;
+                }
+            }
+        }
+        return memo[0] == Index.Good ? true : false;
+    }
+}
