@@ -1,0 +1,46 @@
+class Solution {
+    public int minMeetingRooms(int[][] intervals) {
+        PriorityQueue<Integer> endTimes = new PriorityQueue<>();
+        PriorityQueue<Integer> startTimes = new PriorityQueue<>();
+        HashSet<Integer> set = new HashSet();
+        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
+        for(int[] interval : intervals)
+        {
+            int startTime = interval[0];
+            set.add(startTime);
+            if(map.containsKey(startTime))
+            {
+                ArrayList<Integer> arr = map.get(startTime);
+                arr.add(interval[1]);
+                map.replace(startTime, arr);
+            }
+            else
+            {
+                ArrayList<Integer> arr = new ArrayList<>();
+                arr.add(interval[1]);
+                map.put(startTime, arr);
+            }
+        }
+        startTimes.addAll(set);
+        for(int i = 0; i < set.size(); i++)
+        {
+            int start = startTimes.poll();
+            for(Integer time : map.get(start))
+            {
+                if(endTimes.size() == 0)
+                {
+                    endTimes.add(time);
+                }
+                else
+                {
+                    if(start >= endTimes.peek())
+                    {
+                        endTimes.poll();
+                    }
+                    endTimes.add(time);
+                }
+            }
+        }
+        return endTimes.size();
+    }
+}
