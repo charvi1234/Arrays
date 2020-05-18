@@ -1,0 +1,37 @@
+/* https://leetcode.com/problems/sort-colors/ */
+
+class Solution {
+    void swap(int a, int b)
+    {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+    public void sortColors(int[] nums) {
+        int  lefttwo = nums.length-1;
+        int rightzero = 0;
+        int curr = 0;
+        while(curr <= lefttwo)
+        {
+            if(nums[curr] == 2)
+            {
+                int temp = nums[curr];
+                nums[curr] = nums[lefttwo];
+                nums[lefttwo] = temp;
+                lefttwo--;
+            }
+            else if(nums[curr] == 0)
+            {
+                int temp = nums[curr];
+                nums[curr] = nums[rightzero];
+                nums[rightzero] = temp;
+                rightzero++;
+                curr++;
+            }
+            else
+            {
+                curr++;
+            }
+        }
+    }
+}
