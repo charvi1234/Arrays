@@ -1,0 +1,31 @@
+/* https://leetcode.com/problems/subarray-sum-equals-k/ */
+
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        if(nums.length == 1 && k != nums[0])
+            return 0;
+        HashMap<Integer, Integer> hmap = new HashMap<>();
+        hmap.put(0,1);
+        int result = 0;
+        int sum = 0;
+        for(int i = 0; i < nums.length; i++)
+        {
+            sum = sum + nums[i];
+            if(hmap.containsKey(sum-k))
+            {
+                result = result + hmap.get(sum-k);
+            }
+            if(hmap.containsKey(sum))
+            {
+                int count = hmap.get(sum);
+                count++;
+                hmap.replace(sum, count);
+            }
+            else
+            {
+                hmap.put(sum, 1);
+            }
+        }
+        return result;
+    }
+}
